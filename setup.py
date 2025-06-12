@@ -8,13 +8,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="qiye-wechat-mcp",
-    version="0.1.0",
-    author="编程之王",
-    author_email="example@example.com",
+    version="0.1.1",
+    author="shellus",
+    author_email="353358601@qq.com",
     description="企业微信群机器人 MCP 服务器",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/example/qiye-wechat-mcp",
+    url="https://github.com/shellus/qiye_wechat_mcp.git",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -34,11 +34,7 @@ setup(
         "requests>=2.25.0",
         "python-dotenv>=0.19.0",
     ],
-    entry_points={
-        "console_scripts": [
-            "qiye-wechat-mcp=qiye_wechat_mcp.server:main",
-        ],
-    },
+
     include_package_data=True,
     zip_safe=False,
 )
