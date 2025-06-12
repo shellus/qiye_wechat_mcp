@@ -1,40 +1,73 @@
 # 企业微信消息 MCP 服务器
 
-超简单的企业微信群机器人 MCP 服务器，让 AI 助手能发送消息到企业微信群。
+简单的企业微信群机器人 MCP 服务器，让 AI 助手能发送消息到企业微信群。
+
+## 安装
+
+### 方式一：pip安装（推荐）
+```bash
+pip install qiye-wechat-mcp
+```
+
+### 方式二：从源码安装
+```bash
+git clone https://github.com/example/qiye-wechat-mcp.git
+cd qiye-wechat-mcp
+pip install -e .
+```
 
 ## 快速开始
 
-### 1. 安装依赖
-```bash
-pip install mcp requests python-dotenv
-```
-
-### 2. 配置企业微信群机器人
+### 1. 配置企业微信群机器人
 1. 在企业微信群中添加群机器人
 2. 复制机器人的 Webhook URL
 
-### 3. 设置环境变量
+### 2. 设置环境变量
 ```bash
-cp .env.example .env
-# 编辑 .env 文件，填入你的 Webhook URL
+# 设置环境变量
+export WECHAT_WEBHOOK_URL="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key"
+
+# 或者创建 .env 文件
+echo "WECHAT_WEBHOOK_URL=https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key" > .env
 ```
 
-### 4. 运行服务器
+### 3. 运行服务器
+
+#### 使用命令行工具
 ```bash
-python server.py
+qiye-wechat-mcp
 ```
 
-### 5. 配置 Claude Desktop
+#### 或使用Python模块
+```bash
+python -m qiye_wechat_mcp
+```
+
+### 4. 配置 Claude Desktop
 在 Claude Desktop 配置文件中添加：
+
+```json
+{
+  "mcpServers": {
+    "企业微信": {
+      "command": "qiye-wechat-mcp",
+      "env": {
+        "WECHAT_WEBHOOK_URL": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key"
+      }
+    }
+  }
+}
+```
+
+或者使用Python模块方式：
 ```json
 {
   "mcpServers": {
     "企业微信": {
       "command": "python",
-      "args": ["server.py"],
-      "cwd": "/path/to/this/directory",
+      "args": ["-m", "qiye_wechat_mcp"],
       "env": {
-        "WECHAT_WEBHOOK_URL": "你的webhook地址"
+        "WECHAT_WEBHOOK_URL": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key"
       }
     }
   }
@@ -44,5 +77,18 @@ python server.py
 ## 功能
 - `send_text_message(content)` - 发送文本消息
 - `send_markdown_message(content)` - 发送Markdown消息
+
+## 发布到PyPI
+
+### 构建包
+```bash
+python setup.py sdist bdist_wheel
+```
+
+### 上传到PyPI
+```bash
+pip install twine
+twine upload dist/*
+```
 
 就这么简单！

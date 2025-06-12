@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """企业微信群机器人 MCP 服务器 - 超简化版本"""
 
-import json
 import os
 import requests
 from dotenv import load_dotenv
@@ -34,7 +33,11 @@ def send_markdown_message(content: str) -> str:
     result = response.json()
     return "✅ 发送成功" if result.get('errcode', 0) == 0 else f"❌ 发送失败: {result.get('errmsg', '未知错误')}"
 
-if __name__ == "__main__":
+def main():
+    """主入口函数，供pip安装后的命令行调用"""
     mcp.run()
+
+if __name__ == "__main__":
+    main()
 
 
