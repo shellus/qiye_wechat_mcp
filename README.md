@@ -36,7 +36,7 @@ pip install qiye-wechat-mcp
 ## AI提示词
 ```markdown
 1. 使用中文回复
-2. 完成任务时使用
+2. 在完成任务得最后，使用`qiye_wechat_mcp.send_text_message(content)`发送完成通知。
 ```
 ---
 
