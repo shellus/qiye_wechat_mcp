@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="qiye-wechat-mcp",
-    version="0.1.1",
+    version="0.1.5",
     author="shellus",
     author_email="353358601@qq.com",
     description="企业微信群机器人 MCP 服务器",
@@ -34,7 +34,11 @@ setup(
         "requests>=2.25.0",
         "python-dotenv>=0.19.0",
     ],
-
+    entry_points={
+        "console_scripts": [
+            "qiye-wechat-mcp=qiye_wechat_mcp.server:main",
+        ],
+    },
     include_package_data=True,
     zip_safe=False,
 )

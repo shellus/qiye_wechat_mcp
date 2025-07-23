@@ -2,12 +2,6 @@
 
 简单的企业微信群机器人 MCP 服务器，让 AI 助手能发送消息到企业微信群。
 
-## 安装
-
-```bash
-pip install qiye-wechat-mcp
-```
-
 ## 快速开始
 
 ### 1. 配置企业微信群机器人
@@ -19,8 +13,8 @@ pip install qiye-wechat-mcp
 {
   "mcpServers": {
     "企业微信": {
-      "command": "python",
-      "args": ["-m", "qiye_wechat_mcp"],
+      "command": "uvx",
+      "args": ["qiye-wechat-mcp@latest"],
       "env": {
         "WECHAT_WEBHOOK_URL": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key"
       }
